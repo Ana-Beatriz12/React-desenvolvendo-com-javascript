@@ -16,4 +16,8 @@ code {
 :root{
   --white: #fff;
   --shadow: rgba(0,0,0,0.06);
+  --form-fundo: #F2F2F2;
+  --color-button: #6278F7;
+  --color-white: #ffff;
+  --label-buttonHover:#95FFD4;
 }
