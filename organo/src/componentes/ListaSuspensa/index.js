@@ -5,9 +5,9 @@ const ListaSuspensa = (propriedades) => {
   return (
     <div className="lista-suspensa">
       <label>{propriedades.label}</label>
-      <select onChange={evento => propriedades.aoAlterado(evento.target.value)} required={propriedades.required} value={propriedades.value} id="">
+      <select onChange={evento => propriedades.aoAlterado(evento.target.value)} required={propriedades.required} value={propriedades.value} id={propriedades.id} translate="no">
         {propriedades.itens.map((item) => (
-          <option key={item} >{item}</option>
+          <option key={item} translate="no" >{item}</option>
         ))}
       </select>
     </div>
