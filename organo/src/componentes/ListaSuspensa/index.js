@@ -5,7 +5,8 @@ const ListaSuspensa = (propriedades) => {
   return (
     <div className="lista-suspensa">
       <label>{propriedades.label}</label>
-      <select onChange={evento => propriedades.aoAlterado(evento.target.value)} required={propriedades.required} value={propriedades.value} id={propriedades.id} translate="no">
+      <select onChange={evento => propriedades.aoAlterado(evento.target.value)} required={propriedades.required} value={propriedades.valor} id={propriedades.id} translate="no">
+        <option value="">Escolha o Time:</option>
         {propriedades.itens.map((item) => (
           <option key={item} translate="no" >{item}</option>
         ))}
