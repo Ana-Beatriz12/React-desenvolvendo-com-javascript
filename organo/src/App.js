@@ -2,6 +2,7 @@ import { useState } from "react";
 import Banner from "./componentes/Banner";
 import Formulario from "./componentes/Formulario";
 import Time from "./componentes/Time";
+import Rodape from "./componentes/Rodape";
 
 //https://github.com/alura-cursos/organo/tree/aula-5/src/componentes
 
@@ -59,26 +60,30 @@ const App = () => {
 
   const aoNovoColaboradorAdicionado = (colaborador) => {
     console.log("COLABORADOR ADICIONADO", colaborador);
-    setColaboradores([...colaboradores, colaborador])
+    setColaboradores([...colaboradores, colaborador]);
   };
   return (
     <div className="campo-texto">
       <Banner />
-      <Formulario times={times.map(time => time.nome)} // time.nome aqui no nosso form, pegamos a lista de times e fazemos com que ele retorne apenas o nome, formatado em sting.
-        aoColaboradorCadastrado={colaborador =>
+      <Formulario
+        times={times.map((time) => time.nome)} // time.nome aqui no nosso form, pegamos a lista de times e fazemos com que ele retorne apenas o nome, formatado em sting.
+        aoColaboradorCadastrado={(colaborador) =>
           aoNovoColaboradorAdicionado(colaborador)
         }
       />
-      {/* /*para cada time, dentro da lista de times, criamos um componente chamado time , o time é o nome da lista, e depois do . é o nome da nossa variavel de acesso para o valor, que esta na lista*/ }
-      {times.map(time  => 
+      {/* /*para cada time, dentro da lista de times, criamos um componente chamado time , o time é o nome da lista, e depois do . é o nome da nossa variavel de acesso para o valor, que esta na lista*/}
+      {times.map((time) => (
         <Time
           key={time.id}
           nome={time.nome}
           corPrimaria={time.corPrimaria}
           corSecundaria={time.corSecundaria}
-          colaboradores={colaboradores.filter(colaborador => colaborador.time === time.id)}//.filter(colaborador => colaborador.time === time.nome)
-        />)}
-        
+          colaboradores={colaboradores.filter(
+            (colaborador) => colaborador.time === time.id,
+          )} //.filter(colaborador => colaborador.time === time.nome)
+        />
+      ))}
+      <Rodape />
     </div>
   );
 };

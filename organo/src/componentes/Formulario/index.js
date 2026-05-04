@@ -17,6 +17,11 @@ const Formulario = (propriedades) => {
     propriedades.aoColaboradorCadastrado({
       nome, cargo,imagem, time
     })
+    //limpando os campos de texto depois de cadastrar o colaborador nos times.
+    setNome('')
+    setCargo('')
+    setImagem('')
+    setTime('')
   }
   return (
     <section className="formulario">
