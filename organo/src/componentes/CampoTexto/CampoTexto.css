@@ -1,6 +1,7 @@
 .campo-texto {
   /* margin: 24px 0; */
   margin: 0;
+  height: auto;
 }
 
 .campo-texto label {
