@@ -1,8 +1,96 @@
 .banner {
-  background-color: #6278f7;
   text-align: center;
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: start;
 }
 
-.banner img{
+/*ESTILIZAÇÃO VIDEO*/
+.banner .back-video {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  /* z-index: 1; */
+  top: 0rem;
   width: 100%;
+  object-fit: cover;
+  height: 100%;
+}
+
+/*TITULO HOME SQUAD*/
+.titulo-home {
+  font-size: 33px;
+  font-weight: 600;
+  color: white;
+  z-index: 1;
+  padding: 1.3em 2rem;
+  position: relative;
+  display: inline-block;
+  flex-wrap: wrap;
+  text-align: start;
+}
+
+.titulo-home p{
+  color: var(--color-button);
+  font-weight: 700;
+}
+
+.titulo-home::after,
+.titulo-home::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right, #6278f7, #ffffff);
+  /* bottom: -5px; */
+  left: 0;
+  transform: scaleX(0);
+  transform-origin: top;
+  transition: transform 0.4s ease-out;
+  cursor: pointer;
+}
+
+.titulo-home::before {
+  top: -5px;
+  transform-origin: left;
+}
+
+.titulo-home:hover::after,
+.titulo-home:hover::before {
+  transform: scaleX(1);
+}
+
+/*estilizando container principal*/
+.container-principal {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0rem 2rem;
+}
+
+.image-home img{
+  --s: 350px;   /* the size of the image */
+  --b: 8px;     /* the border thickness*/
+  --g: 14px;    /* the gap */
+  --c: #6278f7; /* the color */
+  
+  width: var(--s);
+  aspect-ratio: 1;
+  /* outline: calc(var(--s)/2) solid rgb(113, 111, 111); */
+  outline-offset: calc(var(--s)/-2);
+  cursor: pointer;
+  transition: .3s;
+  border-radius: 12px;
+  z-index: 1;
+  position: relative;
+    box-shadow: 8px 6px 1px 1px #6278f7;
+}
+.image-home img:hover{
+   outline: var(--b) solid var(--c);
+  outline-offset: var(--g);
+  box-shadow: none;
 }

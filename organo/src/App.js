@@ -3,6 +3,7 @@ import Banner from "./componentes/Banner";
 import Formulario from "./componentes/Formulario";
 import Time from "./componentes/Time";
 import Rodape from "./componentes/Rodape";
+import "./index.css";
 
 //https://github.com/alura-cursos/organo/tree/aula-5/src/componentes
 
