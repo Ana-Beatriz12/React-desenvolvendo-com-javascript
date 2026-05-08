@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Banner from "./componentes/Banner";
 import Formulario from "./componentes/Formulario";
 import Time from "./componentes/Time";
@@ -10,6 +10,20 @@ import "./index.css";
 // PARA USAR OS SERVIDOR DO REACT, ENTRAMOS NA PASTA organo NO TERMINAL DO VS CODE E DEPOIS RODAMOS O COMANDO npm start PARA INICIAR OS SERVIDOR.
 
 const App = () => {
+  const [colaboradores, setColaboradores] = useState([]);
+
+  useEffect(() => {
+    const dadosSalvos = localStorage.getItem("colaboradores");
+
+    if (dadosSalvos) {
+      setColaboradores(JSON.parse(dadosSalvos));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("colaboradores", JSON.stringify(colaboradores));
+  }, [colaboradores]);
+
   const times = [
     {
       id: "Programação",
@@ -55,14 +69,12 @@ const App = () => {
     },
   ];
 
-  // console.log(times);
-
-  const [colaboradores, setColaboradores] = useState([]);
-
+  //salvando novo colaborador adicionado
   const aoNovoColaboradorAdicionado = (colaborador) => {
     // console.log("COLABORADOR ADICIONADO", colaborador);
     setColaboradores([...colaboradores, colaborador]);
   };
+
   return (
     <div className="campo-texto">
       <Banner />
@@ -80,8 +92,7 @@ const App = () => {
           corPrimaria={time.corPrimaria}
           corSecundaria={time.corSecundaria}
           colaboradores={colaboradores.filter(
-            (colaborador) => colaborador.time === time.id,
-          )} //.filter(colaborador => colaborador.time === time.nome)
+            (colaborador) => colaborador.time === time.id,)}
         />
       ))}
       <Rodape />

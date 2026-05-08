@@ -6,7 +6,7 @@
   justify-content: space-around;
   background-color: var(--fundo-rodape);
   min-height: 20dvh;
-  align-items: center;/*centraliza os elementos verticalmente*/
+  align-items: center; /*centraliza os elementos verticalmente*/
   flex-wrap: wrap;
 }
 
@@ -17,15 +17,32 @@
   cursor: pointer;
 }
 
-.logo-projeto img{
-    width: 156px;
+.redes-sociais img{
+  width: 50px;
+}
+
+.logo-projeto h1 {
+  font-size: 1.5rem;
+  color: var(--white);
+  flex-wrap: wrap;
+}
+/*.logo-projeto::after,
+.logo-projeto::before 
+AQUI SE COLOCAMOS O AFTER, ELE COLOCA A LINHA EMBAIXO DO TITULO, JÁ O BEFORE É ENCIMA */
+.logo-projeto::after { 
+  content: "";
+  position: absolute;
+  width: 8%;
+  height: 2px;
+  background: linear-gradient(to right, #6278f7, #ffffff);  
+  flex-wrap: wrap;
+}
+/* .logo-projeto img{
+    width: 100px;
     max-width: 100%;
+} */
+
+.desenvolvedor h2 {
+  color: var(--white);
+  font-weight: 500;
 }
-
-.desenvolvedor h2{
-    color: var(--white);
-    font-weight: 500;
-}
-
-
-
