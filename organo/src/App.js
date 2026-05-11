@@ -10,19 +10,34 @@ import "./index.css";
 // PARA USAR OS SERVIDOR DO REACT, ENTRAMOS NA PASTA organo NO TERMINAL DO VS CODE E DEPOIS RODAMOS O COMANDO npm start PARA INICIAR OS SERVIDOR.
 
 const App = () => {
-  const [colaboradores, setColaboradores] = useState([]);
+  /*SALVANDO NO LOCAL STORAGE, O CARD CADASTRADO!*/
+  const [colaboradores, setColaboradores] = useState(() => {
+    const dadosSalvos = localStorage.getItem("colaboradoresCadastrados");
+    return dadosSalvos ? JSON.parse(dadosSalvos) : [];
+  });
 
   useEffect(() => {
-    const dadosSalvos = localStorage.getItem("colaboradores");
-
-    if (dadosSalvos) {
-      setColaboradores(JSON.parse(dadosSalvos));
-    }
-  }, []);
-
-  useEffect(() => {
-    localStorage.setItem("colaboradores", JSON.stringify(colaboradores));
+    localStorage.setItem(
+      "colaboradoresCadastrados",
+      JSON.stringify(colaboradores),
+    );
   }, [colaboradores]);
+
+  //FUNÇÃO REMOVE TIME(COLABORADOR)
+
+  const removerColaborador = (nome) => {
+    const confirmar = window.confirm(
+    `Deseja realmente excluir este colaborador - ${nome}?`,
+    );
+
+    if (!confirmar) return;
+
+    const novalista = colaboradores.filter(
+      (colaborador) => colaborador.nome !== nome,
+    );
+
+    setColaboradores(novalista); // Salva os dados modificados na lista.
+  };
 
   const times = [
     {
@@ -92,7 +107,9 @@ const App = () => {
           corPrimaria={time.corPrimaria}
           corSecundaria={time.corSecundaria}
           colaboradores={colaboradores.filter(
-            (colaborador) => colaborador.time === time.id,)}
+            (colaborador) => colaborador.time === time.id,
+          )}
+          aoRemover={removerColaborador}
         />
       ))}
       <Rodape />
