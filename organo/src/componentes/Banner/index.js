@@ -1,5 +1,5 @@
 // IMPORTANDO O ARQUIVO CSS PARA ESTILIZAR O BANNER
-import React, { Component } from "react";
+import React from "react";
 import "./Banner.css";
 import myVideo from "../../videos/fundo-home2.mp4";
 
