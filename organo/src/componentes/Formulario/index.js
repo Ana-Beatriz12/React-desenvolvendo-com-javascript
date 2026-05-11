@@ -4,6 +4,7 @@ import Botao from "../Botao";
 import "./Formulario.css";
 import { useState } from "react";
 
+
 const Formulario = (propriedades) => {
 
   //fazendo o useState para cada campo o form, para pegar os valores digitados e salvar eles em tempo real
@@ -12,17 +13,21 @@ const Formulario = (propriedades) => {
   const [imagem, setImagem] = useState('');
   const [time, setTime] = useState('');
 
+  
   const aoSalvar = (evento) => {
     evento.preventDefault();
     propriedades.aoColaboradorCadastrado({
       nome, cargo,imagem, time
     })
+    console.log(nome, cargo,imagem,time);
+  
     //limpando os campos de texto depois de cadastrar o colaborador nos times.
     setNome('')
     setCargo('')
     setImagem('')
     setTime('')
   }
+
   return (
     <section className="formulario">
       <form onSubmit={aoSalvar}>

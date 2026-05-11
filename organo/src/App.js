@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Banner from "./componentes/Banner";
 import Formulario from "./componentes/Formulario";
 import Time from "./componentes/Time";
@@ -10,6 +10,35 @@ import "./index.css";
 // PARA USAR OS SERVIDOR DO REACT, ENTRAMOS NA PASTA organo NO TERMINAL DO VS CODE E DEPOIS RODAMOS O COMANDO npm start PARA INICIAR OS SERVIDOR.
 
 const App = () => {
+  /*SALVANDO NO LOCAL STORAGE, O CARD CADASTRADO!*/
+  const [colaboradores, setColaboradores] = useState(() => {
+    const dadosSalvos = localStorage.getItem("colaboradoresCadastrados");
+    return dadosSalvos ? JSON.parse(dadosSalvos) : [];
+  });
+
+  useEffect(() => {
+    localStorage.setItem(
+      "colaboradoresCadastrados",
+      JSON.stringify(colaboradores),
+    );
+  }, [colaboradores]);
+
+  //FUNÇÃO REMOVE TIME(COLABORADOR)
+
+  const removerColaborador = (nome) => {
+    const confirmar = window.confirm(
+    `Deseja realmente excluir este colaborador - ${nome}?`,
+    );
+
+    if (!confirmar) return;
+
+    const novalista = colaboradores.filter(
+      (colaborador) => colaborador.nome !== nome,
+    );
+
+    setColaboradores(novalista); // Salva os dados modificados na lista.
+  };
+
   const times = [
     {
       id: "Programação",
@@ -55,14 +84,12 @@ const App = () => {
     },
   ];
 
-  // console.log(times);
-
-  const [colaboradores, setColaboradores] = useState([]);
-
+  //salvando novo colaborador adicionado
   const aoNovoColaboradorAdicionado = (colaborador) => {
     // console.log("COLABORADOR ADICIONADO", colaborador);
     setColaboradores([...colaboradores, colaborador]);
   };
+
   return (
     <div className="campo-texto">
       <Banner />
@@ -81,7 +108,8 @@ const App = () => {
           corSecundaria={time.corSecundaria}
           colaboradores={colaboradores.filter(
             (colaborador) => colaborador.time === time.id,
-          )} //.filter(colaborador => colaborador.time === time.nome)
+          )}
+          aoRemover={removerColaborador}
         />
       ))}
       <Rodape />

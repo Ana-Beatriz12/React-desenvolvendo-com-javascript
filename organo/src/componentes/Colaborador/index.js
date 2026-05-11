@@ -2,7 +2,7 @@ import "./Colaborador.css";
 
 const Colaborador = ({nome,cargo,imagem, corDeFundoCard}) => {
   return (
-    <div className="colaborador">
+    <div className="colaborador" title="EXCLUIR CARD">
         {/* https://github.com/Ana-Beatriz12.png */}
       <div className="cabecalho" style={{backgroundColor:corDeFundoCard}}>
         <img src={imagem} alt="" />

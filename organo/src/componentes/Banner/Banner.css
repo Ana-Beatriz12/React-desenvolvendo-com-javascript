@@ -12,7 +12,7 @@
   position: absolute;
   right: 0;
   bottom: 0;
-  /* z-index: 1; */
+  z-index: 1;
   top: 0rem;
   width: 100%;
   object-fit: cover;
@@ -23,17 +23,19 @@
 .titulo-home {
   font-size: 33px;
   font-weight: 600;
-  color: white;
+  color: black;
   z-index: 1;
   padding: 1.3em 2rem;
   position: relative;
   display: inline-block;
   flex-wrap: wrap;
   text-align: start;
+  /* font-family:
+     source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;  */
 }
 
-.titulo-home p{
-  color: var(--color-button);
+.titulo-home p {
+  color: var(--fundo-rodape);
   font-weight: 700;
 }
 
@@ -72,25 +74,25 @@
   padding: 0rem 2rem;
 }
 
-.image-home img{
-  --s: 350px;   /* the size of the image */
-  --b: 8px;     /* the border thickness*/
-  --g: 14px;    /* the gap */
+.image-home img {
+  --s: 350px; /* the size of the image */
+  --b: 8px; /* the border thickness*/
+  --g: 14px; /* the gap */
   --c: #6278f7; /* the color */
-  
+
   width: var(--s);
   aspect-ratio: 1;
   /* outline: calc(var(--s)/2) solid rgb(113, 111, 111); */
-  outline-offset: calc(var(--s)/-2);
+  outline-offset: calc(var(--s) / -2);
   cursor: pointer;
-  transition: .3s;
+  transition: 0.3s;
   border-radius: 12px;
   z-index: 1;
   position: relative;
-    box-shadow: 8px 6px 1px 1px #6278f7;
+  box-shadow: 8px 6px 1px 1px #6278f7;
 }
-.image-home img:hover{
-   outline: var(--b) solid var(--c);
+.image-home img:hover {
+  outline: var(--b) solid var(--c);
   outline-offset: var(--g);
   box-shadow: none;
 }

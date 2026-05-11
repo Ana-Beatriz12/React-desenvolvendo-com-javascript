@@ -6,11 +6,13 @@
 
 .campo-texto label {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
   font-size: 24px;
+  color: var(--fundo-rodape);
 }
 
-.campo-texto input {
+.campo-texto input,
+.campo-texto select {
   background-color: var(--white);
   box-shadow: 10px 10px 30px var(--shadow);
   width: 100%;
@@ -18,4 +20,12 @@
   font-size: 24px;
   padding: 24px;
   box-sizing: border-box;
+  margin-bottom: 32px;
+  border-radius: 13px;
+}
+.campo-texto input:focus,
+.campo-texto select:focus{
+  border: solid var(--fundo-rodape) 5px;
+  outline: none;
+  color: black;
 }

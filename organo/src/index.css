@@ -1,10 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Atomic+Age&family=Domine:wght@400..700&family=IBM+Plex+Sans:ital,wght@0,100..700;1,100..700&family=Krona+One&family=Monsieur+La+Doulaise&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Zalando+Sans+SemiExpanded:ital,wght@0,200..900;1,200..900&display=swap");
+
 body {
   margin: 0;
-  font-family:
-    -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
-    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-weight: 600;
+  font-style: normal;
+  font-family: "Domine", serif;
 }
 
 code {
@@ -26,7 +26,7 @@ code {
 }
 
 /*MEDIAS QUERYS*/
-@media screen and (min-width:1197px) and (max-width: 2000px) {
+@media screen and (min-width: 1197px) and (max-width: 2000px) {
   .banner {
     height: 50dvh;
   }
@@ -39,7 +39,7 @@ code {
   }
 }
 
-@media screen and (min-width:300px) and (max-width: 1197px) {
+@media screen and (min-width: 300px) and (max-width: 1197px) {
   .banner {
     height: 52dvh;
   }
@@ -50,12 +50,16 @@ code {
   .titulo-home p {
     font-size: 35px;
   }
+  .Rodape {
+    gap: 0.45rem;
+  }
 }
 
 @media screen and (max-width: 600px) {
   .banner {
-    height: 20dvh;
+    height: 50dvh;
   }
+
   .titulo-home h1,
   .titulo-home p {
     font-size: 25px;
