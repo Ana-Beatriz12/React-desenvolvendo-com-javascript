@@ -3,6 +3,7 @@ import Banner from "./componentes/Banner";
 import Formulario from "./componentes/Formulario";
 import Time from "./componentes/Time";
 import Rodape from "./componentes/Rodape";
+import AlertPage from "./componentes/Alert";
 import "./index.css";
 
 //https://github.com/alura-cursos/organo/tree/aula-5/src/componentes
@@ -24,19 +25,26 @@ const App = () => {
   }, [colaboradores]);
 
   //FUNÇÃO REMOVE TIME(COLABORADOR)
+  const [alertaAberto, setAlertaAberto] = useState(false);
+  const [colaboradorParaExcluir, setColaboradorParaExcluir] = useState(null);
 
-  const removerColaborador = (nome) => {
-    const confirmar = window.confirm(
-    `Deseja realmente excluir este colaborador - ${nome}?`,
-    );
+  // const removerColaborador = (nome) => {
+  const prepararExclusao = (nome) => {
+    setColaboradorParaExcluir(nome);
+    setAlertaAberto(true);
+  };
 
-    if (!confirmar) return;
-
+  const confirmarExclusao = () => {
     const novalista = colaboradores.filter(
-      (colaborador) => colaborador.nome !== nome,
+      (colaborador) => colaborador.nome !== colaboradorParaExcluir,
     );
+    setColaboradores(novalista);
+    setAlertaAberto(false); // Fecha o modal após excluir
+  };
 
-    setColaboradores(novalista); // Salva os dados modificados na lista.
+  // FUNCAO CANCELAR EXCLUSAO
+  const cancelarExclusao = () => {
+    setAlertaAberto(false);
   };
 
   const times = [
@@ -99,6 +107,15 @@ const App = () => {
           aoNovoColaboradorAdicionado(colaborador)
         }
       />
+      <div>
+        {alertaAberto && (
+          <AlertPage
+            confirmar={confirmarExclusao}
+            cancelar={cancelarExclusao}
+          />
+        )}
+      </div>
+
       {/* /*para cada time, dentro da lista de times, criamos um componente chamado time , o time é o nome da lista, e depois do . é o nome da nossa variavel de acesso para o valor, que esta na lista*/}
       {times.map((time) => (
         <Time
@@ -109,7 +126,8 @@ const App = () => {
           colaboradores={colaboradores.filter(
             (colaborador) => colaborador.time === time.id,
           )}
-          aoRemover={removerColaborador}
+          aoRemover={prepararExclusao}
+          // aoRemover={removerColaborador}
         />
       ))}
       <Rodape />
