@@ -1,4 +1,5 @@
 import Colaborador from "../Colaborador";
+// import Alert from "../Alert";
 import "./Time.css";
 
 const Time = (propriedades) => {
@@ -26,11 +27,11 @@ const Time = (propriedades) => {
             </div>
           ))}
         </div>
+        {/* <Alert/> */}
       </section>
     ) : (
       ""
     )
   );
 };
-
 export default Time;
