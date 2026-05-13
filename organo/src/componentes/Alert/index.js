@@ -1,4 +1,4 @@
-import { Toast } from "primereact/toast";
+
 import { Alert, AlertTitle, Button } from "@mui/material";
 
 import "./Alert.css";
